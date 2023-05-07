@@ -1,13 +1,11 @@
 package br.com.centra.infractions.infractionsconsumer.service;
 
-import br.com.centra.infractions.infractionsconsumer.InfractionsconsumerApplication;
 import br.com.centra.infractions.infractionsconsumer.dto.RecordsDto;
 import br.com.centra.infractions.infractionsconsumer.feign.InfractionsFeignConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDateTime;
@@ -28,10 +26,10 @@ public class RadarSimulator {
 
     @PostConstruct
     @Scheduled(fixedRate = 3000)
-    public void run() {
+    public void initialMethod() {
         while (true) {
             LocalDateTime dateTime = LocalDateTime.now();
-            int speed = random.nextInt(21) + 80;
+            Integer speed = random.nextInt(21) + 80;
             String plate = generatePlate();
             String vehicleClass = generateVehicleClass();
 
